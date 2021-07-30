@@ -7,7 +7,7 @@
     <title>Beauty Saloon</title>
 
     <!-- ICONS -->
-    <link rel="stylesheet" href="assets/fonts/style.css">
+    <link rel="stylesheet" href="assets/fonts/style.css" />
     <!-- STYLES -->
     <link rel="stylesheet" href="style.css" />
     <!-- FONTS -->
@@ -21,7 +21,7 @@
 
   <body>
     <header id="header">
-      <nav class="container show">
+      <nav class="container">
         <a class="logo" href="#">beauty<span>salon</span>.</a>
         <!-- menu  -->
         <div class="menu">
@@ -33,7 +33,7 @@
             <li><a class="title" href="#contact">Contato</a></li>
           </ul>
         </div>
-        <!-- menu  -->
+        <!-- /menu  -->
         <div class="toggle icon-menu"></div>
         <div class="toggle icon-close"></div>
       </nav>
@@ -62,13 +62,67 @@
       <div class="divider-1"></div>
 
       <section class="section" id="about">
-        <div class="container grid">Sobre</div>
+        <div class="container grid">
+          <div class="image">
+            <img
+              src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGFpcmRyZXNzZXJ8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              alt="Três cabeleireiras sorrindo com tesoura e escova na mão "
+            />
+          </div>
+          <div class="text">
+            <h2 class="title">Sobre nós</h2>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Voluptatem, accusamus velit eaque rerum iusto commodi est ullam
+              optio ipsum, in ea, ipsam fuga voluptatum veniam illum neque saepe
+              sunt fugiat?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+              blanditiis consectetur omnis nemo corrupti voluptate eum dolores
+              laborum rem ipsum minima, illum nihil expedita soluta, iste
+              inventore earum fugit nostrum?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+              fugit qui provident. Placeat id deleniti earum quos adipisci ullam
+              accusantium magni itaque, minus repellat beatae dolore dolores
+              saepe ratione nihil.
+            </p>
+          </div>
+        </div>
       </section>
 
+      <div class="divider-2"></div>
+
       <section class="section" id="services">
-        <div class="container grid">Serviços</div>
+        <div class="container grid">
+          <header>
+            <h2 class="title">Serviços</h2>
+            <p>Com mais de 10 anos no mercado, o <strong>Beautysalon</strong> já conquistou clientes de inúmeros países com seus tratamentos exclusivos e totalmente naturais</p>
+          </header>
+          <div class="cards grid">
+            <div class="card">
+              <i class="icon-woman-hair"></i>
+                <h3 class="title">Terapia Capilar</h3>
+                <p>Terapia completa para couro cabeludo e fios, protegendo todos os tipos de cabelos, inclusive os longos e finos.</p>              
+            </div>
+
+            <div class="card">
+              <i class="icon-trim"></i>
+              <h3 class="title">Cortes</h3>
+              <p>A nossa equipe é repleta de profissionais renomados, famosos por lançarem tendências com cortes diferenciados e clássicos.</p>
+            </div>
+
+            <div class="card">
+              <i class="icon-cosmetic"></i>
+              <h3 class="title">Tratamentos</h3>
+              <p>O beautysalon conta com diversos tratamentos naturais e totalmente veganos, para qualquer tipo de cabelo.</p>
+            </div>
+
+          </div>
+        </div>
       </section>
-      
     </main>
     <script src="main.js"></script>
   </body>
