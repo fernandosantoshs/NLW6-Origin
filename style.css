@@ -145,6 +145,10 @@ main {
   color: var(--base-color);
 }
 
+.logo-alt span {
+  color: var(--body-color);
+}
+
 /**** NAVIGATION *****/
 
 nav {
@@ -452,4 +456,39 @@ nav.show div.icon-close {
 
 #contact ul li i {
   color: var(--base-color);
+}
+
+/***** CONTACT ******/
+
+footer {
+  background: var(--base-color);
+}
+
+footer .logo {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+footer .brand p {
+  color: var(--text-color-light);
+  margin-bottom: .75rem;
+}
+
+footer i {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+}
+
+footer .social {
+  display:flex;
+  gap: 2rem;
+}
+
+/* BACK TO TOP BUTTON */
+
+.back-to-top {
+  background: var(--base-color);
+  position: fixed;
+  right: 1 rem;
+  bottom: 1 rem;
 }
