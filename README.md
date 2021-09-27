@@ -1,5 +1,5 @@
 # NLW6
- Projeto Beaty Saloon - Next Level Week 6
+ Projeto Beauty Salon - Next Level Week 6
  
  <h1>SOBRE</h1>
  
