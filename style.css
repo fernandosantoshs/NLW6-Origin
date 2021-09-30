@@ -32,7 +32,10 @@ img {
   --body-color: hsl(0 0% 98%);
 
   /* FONTS */
-  --title-font-size: 1.875rem;
+  --title-font-size: 1.875rem;  
+  --subtitle-font-size: 1rem;
+  --title-font: 'Poppins', sans-serif;
+  --body-font: 'DM Sans',sans-serif;
 }
  
 /***** BASE *****/ /* 1rem = 16px */
@@ -41,14 +44,14 @@ html {
 }
 
 body {
-  font: 400 1rem "DM Sans", sans-serif;
+  font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
   -webkit-font-smoothing: antialiased;
 }
 
 .title {
-  font: 700 var(--title-font-size) "Poppins", sans-serif;
+  font: 700 var(--title-font-size) var(--title-font);
   color: var(--title-color);
   -webkit-font-smoothing: auto;
 }
@@ -61,7 +64,7 @@ body {
   align-items: center;
   padding: 0 2rem;
   border-radius: 0.25rem;
-  font: 500 1rem "DM Sans", sans-serif;
+  font: 500 1rem var(--body-font);
   transition: background 0.3s;
   /* Assim como o span, a tag button é por padrão display inline. Isso significa que não aceita propriedades de height ou width que estrapole o tamanho do conteúdo. Se usarmos display block, ele receberá altura, porém o width vai preencher o tamanho da caixa pai, neste caso a div de class container, sendo assim, o mais indicado é usar display inline-flex que também habilita o align-itens */
 }
@@ -89,11 +92,9 @@ body {
 }
 
 /**** LAYOUT *****/
-
 .container {
-  margin: 0 1.5rem;
-  /*margin-left: 1.5rem;
-  margin-right: 1.5rem;*/
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
 }
 
 .grid {
@@ -102,11 +103,15 @@ body {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: calc(5rem + var(--header-height)) 0;
 }
 
 .section .title {
   margin-bottom: 1rem;
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-font-size);
 }
 
 .section header {
@@ -121,7 +126,6 @@ body {
   border-bottom: 1px #e4e4e4 solid;
   margin-bottom: 2rem;
   display: flex;
-
   width: 100%;
   background: var(--body-color);
   position: fixed;
@@ -134,14 +138,9 @@ body {
   box-shadow: 0px 0px 12px rgba(0,0,0,.1);
 }
 
-main {
-  margin-top: calc(var(--header-height) + 2rem);
-}
-
 /**** LOGO *****/
-
 .logo {
-  font: 700 1.31rem "Poppins", sans-serif;
+  font: 700 1.31rem var(--title-font);
   color: var(--title-color);
 }
 .logo span {
@@ -153,7 +152,6 @@ main {
 }
 
 /**** NAVIGATION *****/
-
 nav {
   height: var(--header-height);
   display: flex;
@@ -171,11 +169,13 @@ nav ul li a {
   position: relative;
 }
 
-nav ul li a:hover {
-  color: var(--base-color);
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--base-color); 
+
 }
 
-nav ul li a::after {
+nav ul li a::after{ 
   content: '';
   width: 0%;
   height: 2px; /* .125rem */
@@ -186,7 +186,8 @@ nav ul li a::after {
   transition: width .3s;
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
   width: 100%;
 }
 
@@ -414,7 +415,6 @@ nav.show div.icon-close {
 }
 
 /* SWIPER */
-
 .swiper-slide {
   height: auto;
   padding: 4rem 1rem; 
@@ -433,7 +433,6 @@ nav.show div.icon-close {
 }
 
 /***** CONTACT ******/
-
 #contact .grid {
   gap: 4rem;
 }
@@ -461,10 +460,13 @@ nav.show div.icon-close {
   color: var(--base-color);
 }
 
-/***** CONTACT ******/
-
+/***** FOOTER ******/
 footer {
   background: var(--base-color);
+}
+
+footer.section {
+  padding: 4rem 0;
 }
 
 footer .logo {
@@ -482,11 +484,14 @@ footer i {
   color: var(--text-color-light);
 }
 
+footer .social {
+  grid-auto-flow: column;
+  width: fit-content;
+}
+
 footer .social a {
-  margin-right: 2rem;
   transition: .3s;
   display: inline-block;
-  gap: 2rem; 
 }
 
 footer .social a:hover {
@@ -494,7 +499,6 @@ footer .social a:hover {
 }
 
 /* BACK TO TOP BUTTON */
-
 .back-to-top {
   background: var(--base-color);
   color: var(--text-color-light);
@@ -520,12 +524,132 @@ footer .social a:hover {
 
 /* RESPONSIVO */
 /* Extra large devices: 1200> */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section {
+    padding: 10rem 0;
+  }
+
+  .section header,
+  #testimonials header {
+    max-width: 32rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button {
+    height: 3.125rem;
+  }
+
+/* MENU (1200>) */
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav .menu ul li a.title {
+    font: 400 1rem var(--body-font);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav .menu ul li a.title.active {
+    font-weight: bold;
+    -webkit-font-smoothing: auto;
+  }
+
+  nav .icon-menu {
+    display: none;
+  }
+
+  /* Main (1200>) */
+  main {
+    margin-top: calc(var(--header-height) + 2rem);
+  }
+
+  /* HOME (1200>) */
+  #home .container {
+    grid-auto-flow: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+  #home .image {
+     order: 1; /*propriedade 'order' funciona apenas com display grid*/
+  }
+
+  #home .text {
+    order: 0;
+    max-width: 24rem;
+    text-align: left;
+  }
+
+  /* About (1200>) */
+  #about .container {
+    grid-auto-flow: column;
+    margin: 0 auto;
+  }
+
+  /* Services (1200>) */
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .card {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  /* Testimonials (1200>) */
+  #testimonials .container {
+    margin: auto;
+    margin-right: auto;
+    padding: auto;
+  }
+
+  /* Contact (1200>) */
+  #contact .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+  
+  #contact .text p {
+    max-width: 25rem;
+  }
+
+  /* Footer (1200>)  */
+  footer .section {
+    padding: 3.75rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .logo {
+    font-size: 2.25rem;
+  }
+
+}
 /* Large dvices: 1023> */
 
 /* Large devices: 992 > */
 @media (min-width: 992px) {
   :root{
-    --title-font-size:2.2rem;
+    --title-font-size:2.25rem;
+    --subtitle-font-size: 1.125rem;
   }
 }
 

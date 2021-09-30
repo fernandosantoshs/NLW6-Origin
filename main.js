@@ -18,10 +18,10 @@ for (link of links) {
 }
 
 /* Header scroll */
-
-function changeHeaderOnScroll() {
   const header = document.querySelector("#header")
   const navHeight = header.offsetHeight
+
+function changeHeaderOnScroll() {
   if (window.scrollY >= navHeight) {
     header.classList.add("scroll")
   } else {
@@ -36,16 +36,22 @@ const swiper = new Swiper(".swiper-container", {
   pagination: {
     el: ".swiper-pagination",
   },
-  mousewheel: true,
+  //mousewheel: true,
   keyboard: true,
+  breakpoints: {
+    767: {
+      slidesPerView: 2,
+     setWrapperSize: true
+    }
+  }
 })
 
 /* Scroll Reveal : Show elements while scrolling */
 
 const scrollReveal = ScrollReveal({
   origin: "top",
-  distance: "30px",
-  duration: 700,
+  distance: "25px",
+  duration: 600,
   reset: true,
 })
 
@@ -60,8 +66,9 @@ footer .brand, footer .social`,
 )
 
 // Back to top button
-function backToTop(){
-    const backToTopButton = document.querySelector(".back-to-top");
+const backToTopButton = document.querySelector(".back-to-top")
+
+function backToTop(){    
     if (window.scrollY >= 560) {
         backToTopButton.classList.add("show")
     } else {
@@ -69,8 +76,34 @@ function backToTop(){
     }
 }
 
+// Link ativo
+const sections = document.querySelectorAll('main section[id]')
+function activeMenuCurrentSection() {
+  //Guardar variável do eixo Y (Vertical) da page
+  const limite = window.pageYOffset
+  
+  for (const section of sections) {
+    //Guardar o topo da section
+    const sectionTop = section.offsetTop
+    //Guardar altura da section
+    const sectionHeight = section.offsetHeight
+    //Pegar o id da section atual
+    const sectionId = section.getAttribute('id')
+
+    const limiteEntrada = limite >= sectionTop
+    const limiteSaida = limite <= sectionTop + sectionHeight
+
+    if (limiteEntrada && limiteSaida) {
+      document.querySelector('nav ul li a[href*=' + sectionId +']').classList.add('active')
+    } else {
+      document.querySelector('nav ul li a[href*=' + sectionId +']').classList.remove('active')
+    }
+  }
+}
+
 // Page Scroll 
 window.addEventListener("scroll", function(){
     changeHeaderOnScroll()
     backToTop()
+    activeMenuCurrentSection()
 })
